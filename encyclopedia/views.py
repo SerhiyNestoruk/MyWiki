@@ -11,13 +11,13 @@ from random import choice
 
 class NewTextForm(forms.Form):
     title =  forms.CharField(label = '', widget=forms.TextInput(attrs={'name':'title', 'placeholder': 'type the title','cols':'5', 'class':'form-control'}))
-    body = forms.CharField(label = '', widget=forms.Textarea(attrs={'name': 'body','placeholder': 'type your text', 'rows':'3', 'cols':'5', 'class':'form-control'}))
+    body = forms.CharField(label = '', widget=forms.Textarea(attrs={'name': 'body','placeholder': 'type your text', 'rows':'10', 'cols':'5', 'class':'form-control'}))
     # title.label = ''
     # body.label = ''
 
 class EditTextForm(forms.Form):
     title =  forms.CharField(label = '', widget=forms.TextInput(attrs={'name':'title', 'placeholder': 'type the title','cols':'5', 'readonly': 'readonly', 'class':'form-control'}))
-    body = forms.CharField(label = '', widget=forms.Textarea(attrs={'name': 'body','placeholder': 'type your text', 'rows':'3', 'cols':'5', 'class':'form-control'}))
+    body = forms.CharField(label = '', widget=forms.Textarea(attrs={'name': 'body','placeholder': 'type your text', 'rows':'10', 'cols':'5', 'class':'form-control'}))
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
