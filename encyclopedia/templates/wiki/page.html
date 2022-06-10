@@ -8,7 +8,7 @@
     {{ entry_text |safe }} 
    <form action="{%url 'encyclopedia:edit'%}" method="post">
         {% csrf_token %} 
-       <input type="submit" value="Edit page">
+       <input type="submit" class="btn btn-secondary" value="Edit page">
        <input type="hidden" name = "title" value="{{entry_name}}">
        <input type="hidden" name = "body" value={{entry_text}}>
    </form>
