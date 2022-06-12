@@ -1,6 +1,6 @@
 
 import re
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpRequest, HttpResponseRedirect
 from . import util
 from markdown2 import Markdown
@@ -62,6 +62,11 @@ def page(request, entry):
         "entry_name": entry
     })
 
+def random_page(request):
+    entries = util.list_entries()
+    entry = choice(entries)
+    return redirect(f"wiki/{entry}/")
+
 def new(request):
     if request.method == "POST":
         form = NewTextForm(request.POST)
@@ -97,14 +102,6 @@ def edit(request):
             "form": form,
             "edit": True 
         })
-def random_page(request):
-    entries = util.list_entries()
-    entry = choice(entries)
-    entry_text = convert_markdown_to_html(util.get_entry(entry))
-    return render(request, "wiki/page.html", {
-        "entry_text": entry_text,
-        "entry_name": entry
-    })
 
 def convert_markdown_to_html(markdown_text):
     markdowner = Markdown()
